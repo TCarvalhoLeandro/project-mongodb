@@ -20,3 +20,15 @@ public class ResourceExceptionHandler {
 	
 	
 }
+
+/* Parametros do metodo: 
+ 	Qual o tipo da exceção que vou tratar? 
+		ObjectNotFoundException
+		
+	Qual a exigencia do framework?
+		HttpServletRequest 
+	
+	
+	@ExceptionHandler(ObjectNotFoundException.class) -> Quando ocorrer essa exceção faça esse tratamento aqui
+	
+*/
