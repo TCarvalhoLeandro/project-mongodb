@@ -11,17 +11,21 @@ import org.springframework.context.annotation.Configuration;
 import com.leandro.workshopmongo.domain.Post;
 import com.leandro.workshopmongo.domain.User;
 import com.leandro.workshopmongo.dto.AuthorDTO;
+import com.leandro.workshopmongo.dto.CommentDTO;
 import com.leandro.workshopmongo.repository.PostRepository;
 import com.leandro.workshopmongo.repository.UserRepository;
 
 @Configuration
 public class Instantiation implements CommandLineRunner{
 
+   
 	@Autowired
 	private UserRepository userRepository;
 	
 	@Autowired 
 	private PostRepository postRepository;
+
+   
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -46,6 +50,11 @@ public class Instantiation implements CommandLineRunner{
 		
 		maria.getPosts().addAll(Arrays.asList(post1, post2));// Coloca as refenrencias dos post1 e post2 lá em User
 		userRepository.save(maria);
+		
+		CommentDTO comment1 = new CommentDTO("Boa Viagem mano!", sdf.parse("15/03/2024"), new AuthorDTO(bob));
+		CommentDTO comment2 = new CommentDTO("Aproveite!", sdf.parse("20/03/2024"), new AuthorDTO(alex));
+		
+		post1.getListComment().addAll(Arrays.asList(comment1, comment2));
+		postRepository.save(post1);
 	}
-
 }
