@@ -24,8 +24,9 @@ public class PostService implements Serializable{
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Post não encontrado."));
 	}
 	
+	// Metodo de consulta simples com Query Methods
 	public List<Post> findByTitle(String text) {
-		return postRepository.findByTitleContainingIgnoreCase(text);
+		return postRepository.searchTitle(text);
 		
 	}
 

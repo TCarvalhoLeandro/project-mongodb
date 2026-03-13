@@ -37,8 +37,7 @@ public class PostResource implements Serializable{
 		text = URL.decodeParam(text);// Decodifica meu parametro
 		List<Post> list = postService.findByTitle(text);
 		return ResponseEntity.ok().body(list);
-		
-		
+
 	}
 
 }
